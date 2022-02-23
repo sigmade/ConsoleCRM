@@ -43,17 +43,15 @@ namespace CRM
 
         public List<Company> NewData()
         {
-            var contacts = Contacts();
-
             var companies = new List<Company>
             {
-                new Company { Id = 1, Name = "AO STD", Contacts = contacts.Where(c => c.CompanyId == 1).ToList()},
-                new Company { Id = 2, Name = "TOO Grand", Contacts = contacts.Where(c => c.CompanyId == 2).ToList()},
-                new Company { Id = 3, Name = "AO LTS", Contacts = contacts.Where(c => c.CompanyId == 3).ToList()},
-                new Company { Id = 4, Name = "AO Vector", Contacts = contacts.Where(c => c.CompanyId == 4).ToList()},
-                new Company { Id = 5, Name = "TOO Lanta", Contacts = contacts.Where(c => c.CompanyId == 5).ToList()},
-                new Company { Id = 6, Name = "TOO Nord", Contacts = contacts.Where(c => c.CompanyId == 6).ToList()},
-                new Company { Id = 7, Name = "AO West", Contacts = contacts.Where(c => c.CompanyId == 7).ToList()}
+                new Company { Id = 1, Name = "AO STD", Contacts = Contacts().Where(c => c.CompanyId == 1).ToList()},
+                new Company { Id = 2, Name = "TOO Grand", Contacts = Contacts().Where(c => c.CompanyId == 2).ToList()},
+                new Company { Id = 3, Name = "AO LTS", Contacts = Contacts().Where(c => c.CompanyId == 3).ToList()},
+                new Company { Id = 4, Name = "AO Vector", Contacts = Contacts().Where(c => c.CompanyId == 4).ToList()},
+                new Company { Id = 5, Name = "TOO Lanta", Contacts = Contacts().Where(c => c.CompanyId == 5).ToList()},
+                new Company { Id = 6, Name = "TOO Nord", Contacts = Contacts().Where(c => c.CompanyId == 6).ToList()},
+                new Company { Id = 7, Name = "AO West", Contacts = Contacts().Where(c => c.CompanyId == 7).ToList()}
             };
 
             companies.ForEach(c =>

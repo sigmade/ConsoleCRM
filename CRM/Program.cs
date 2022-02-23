@@ -12,7 +12,7 @@ namespace CRM
     {
         private readonly static string _filePath = "CRM.json";
 
-        static void Main(string[] args)
+        static void Main()
         {
             var fileExtension = Path.GetExtension(_filePath);
 
@@ -51,15 +51,19 @@ namespace CRM
                     $"{c.ContactsCount}. TaxNumber - {c.TaxNumber}\n ");
             }
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         static List<Company> ReadData()
         {
-            var reader = new StreamReader(_filePath);
-            var content = reader.ReadToEnd();
+            var content = "";
+
+            using (var reader = new StreamReader(_filePath))
+            {
+                content = reader.ReadToEnd();
+            }
+
             var data = JsonConvert.DeserializeObject<List<Company>>(content);
-            reader.Close();
 
             return data;
         }
@@ -68,9 +72,10 @@ namespace CRM
         {
             var data = new DataGenerator();
             var objToWrite = JsonConvert.SerializeObject(data.NewData());
-            var writer = new StreamWriter(_filePath, false);
-            writer.Write(objToWrite);
-            writer.Close();
+            using (var writer = new StreamWriter(_filePath, false))
+            {
+                writer.Write(objToWrite);
+            }
         }
     }
 }
